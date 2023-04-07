@@ -3,9 +3,14 @@ const Sequelize = require('sequelize')
 
 const { USER, PASSWORD, HOST, NAMEDB } = process.env
 
-const sequelize = new Sequelize(NAMEDB, USER, PASSWORD, {
+const createTableCharacters = require('../models/Character.model')
+
+const database = new Sequelize(NAMEDB, USER, PASSWORD, {
   host: HOST,
-  dialect: 'postgres'
+  dialect: 'postgres',
+  logging: false
 })
 
-module.exports = sequelize
+createTableCharacters(database)
+
+module.exports = database
