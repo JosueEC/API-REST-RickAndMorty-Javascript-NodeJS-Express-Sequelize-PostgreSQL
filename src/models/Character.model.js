@@ -1,7 +1,7 @@
 const DataTypes = require('sequelize')
 
 module.exports = (database) => {
-  database.define('Characters',
+  database.define('Character',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -12,6 +12,20 @@ module.exports = (database) => {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false
+      },
+      gender: {
+        type: DataTypes.ENUM,
+        values: ['Female', 'Male', 'Genderless', 'unknown'],
+        default: 'unknown'
+      },
+      specie: {
+        type: DataTypes.STRING,
+        deafult: 'unknown'
+      },
+      status: {
+        type: DataTypes.ENUM,
+        values: ['Alive', 'Dead', 'unknown'],
+        deafult: 'Alive'
       },
       origin: {
         type: DataTypes.STRING,
