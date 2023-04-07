@@ -1,5 +1,6 @@
 const findAllCharacters = require('./find-all-characters')
 const createCharacter = require('./create-character')
+const findCharacter = require('./find-character')
 
 const readAllCharacters = async (req, res) => {
   try {
@@ -25,7 +26,14 @@ const createNewCharacter = async (req, res) => {
 }
 
 const readCharacterByID = async (req, res) => {
-  res.json('readCharacterByID')
+  try {
+    const { characterID } = req.params
+
+    const characterFinded = await findCharacter(characterID)
+    res.status(200).json(characterFinded)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
 }
 
 const updateCharacterByID = async (req, res) => {
