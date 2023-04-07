@@ -1,6 +1,6 @@
 const { Router } = require('express')
 
-const characterController = require('../controllers/character-controllers/Character.controller')
+const characterController = require('../controllers/CRUD-character-controllers/Character.controller')
 
 const router = Router()
 
