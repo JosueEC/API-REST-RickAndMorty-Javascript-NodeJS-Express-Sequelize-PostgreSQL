@@ -2,6 +2,7 @@ const findAllCharacters = require('./find-all-characters')
 const createCharacter = require('./create-character')
 const findCharacter = require('./find-character')
 const deleteCharacter = require('./delete-character')
+const updateCharacter = require('./update-character')
 
 const readAllCharacters = async (req, res) => {
   try {
@@ -38,7 +39,16 @@ const readCharacterByID = async (req, res) => {
 }
 
 const updateCharacterByID = async (req, res) => {
-  res.json('update character by id')
+  try {
+    const { characterID } = req.params
+    const { name, gender, specie, status, origin, image } = req.body
+    const newData = { name, gender, specie, status, origin, image }
+
+    const character = await updateCharacter(characterID, newData)
+    res.status(200).json(character)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
 }
 
 const deleteCharacterByID = async (req, res) => {
