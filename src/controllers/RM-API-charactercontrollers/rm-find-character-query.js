@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const formatCharacter = require('./formaters/format-character')
 
-const findCharactersQuery = async (name, status, specie, gender) => {
+const findCharactersQuery = async (name, status, specie, gender, page) => {
   let URL = 'https://rickandmortyapi.com/api/character?'
   const queryParams = []
 
@@ -17,6 +17,9 @@ const findCharactersQuery = async (name, status, specie, gender) => {
   if (gender !== undefined) {
     queryParams.push(`gender=${gender}`)
   }
+  if (page !== undefined) {
+    queryParams.push(`page=${page}`)
+  }
 
   URL += queryParams.join('&')
 
@@ -25,7 +28,7 @@ const findCharactersQuery = async (name, status, specie, gender) => {
     .then((data) => {
       return data
     })
-  const newFormatCharacters = formatCharacter(characters.results)
+  const newFormatCharacters = formatCharacter(characters)
   return newFormatCharacters
 }
 

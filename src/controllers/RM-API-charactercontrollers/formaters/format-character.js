@@ -1,5 +1,11 @@
-const formatCharacter = (results) => {
+const formatCharacter = (characters) => {
+  const results = characters.results
+
+  if (results.length === 0) throw Error('Ningun resultado coincide con tu busqueda')
+
   const newFormatResults = []
+
+  newFormatResults.push({ pages: characters.info })
 
   for (let i = 0; i < results.length; i++) {
     const character = {

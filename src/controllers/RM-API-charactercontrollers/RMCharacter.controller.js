@@ -5,10 +5,10 @@ const URL_BASE = 'https://rickandmortyapi.com/api'
 
 const readAllCharacters = async (req, res) => {
   try {
-    const { name, status, specie, gender } = req.query
+    const { name, status, specie, gender, page } = req.query
 
-    const characters = (name || status || specie || gender)
-      ? await findCharactersQuery(name, status, specie, gender)
+    const characters = (name || status || specie || gender || page)
+      ? await findCharactersQuery(name, status, specie, gender, page)
       : await findAllCharacters(URL_BASE)
 
     res.status(200).json(characters)
