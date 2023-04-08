@@ -15,10 +15,10 @@ const readAllCharacters = async (req, res) => {
 
 const createNewCharacter = async (req, res) => {
   try {
-    const { name, gender, specie, status, origin, image } = req.body
+    const { name, gender, specie, status, origin, image, favorite } = req.body
     const newCharacter = await createCharacter(
       {
-        name, gender, specie, status, origin, image
+        name, gender, specie, status, origin, image, favorite
       }
     )
     res.status(200).json(newCharacter)
@@ -41,8 +41,8 @@ const readCharacterByID = async (req, res) => {
 const updateCharacterByID = async (req, res) => {
   try {
     const { characterID } = req.params
-    const { name, gender, specie, status, origin, image } = req.body
-    const newData = { name, gender, specie, status, origin, image }
+    const { name, gender, specie, status, origin, image, favorite } = req.body
+    const newData = { name, gender, specie, status, origin, image, favorite }
 
     const character = await updateCharacter(characterID, newData)
     res.status(200).json(character)

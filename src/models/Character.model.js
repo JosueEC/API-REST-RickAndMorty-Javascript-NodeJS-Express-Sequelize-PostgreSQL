@@ -16,16 +16,16 @@ module.exports = (database) => {
       gender: {
         type: DataTypes.ENUM,
         values: ['Female', 'Male', 'Genderless', 'unknown'],
-        default: 'unknown'
+        defaultValue: 'unknown'
       },
       specie: {
         type: DataTypes.STRING,
-        deafult: 'unknown'
+        defaultValue: 'unknown'
       },
       status: {
         type: DataTypes.ENUM,
         values: ['Alive', 'Dead', 'unknown'],
-        deafult: 'Alive'
+        defaultValue: 'Alive'
       },
       origin: {
         type: DataTypes.STRING,
@@ -36,6 +36,10 @@ module.exports = (database) => {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false
+      },
+      favorite: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
       }
     },
     {

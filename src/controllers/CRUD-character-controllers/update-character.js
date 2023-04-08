@@ -1,10 +1,10 @@
 const { Character } = require('../../database/database')
 
 const updateCharacter = async (characterID, characterData) => {
-  const { name, gender, specie, status, origin, image } = characterData
+  const { name, gender, specie, status, origin, image, favorite } = characterData
   await Character.update(
     {
-      name, gender, specie, status, origin, image
+      name, gender, specie, status, origin, image, favorite
     },
     {
       where: {
