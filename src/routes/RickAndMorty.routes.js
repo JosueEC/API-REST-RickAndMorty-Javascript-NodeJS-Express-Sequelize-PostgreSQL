@@ -6,4 +6,6 @@ const router = Router()
 
 router.get('/character', rmCharacterController.readAllCharacters)
 
+router.get('/character/:characterID', rmCharacterController.readCharacterByID)
+
 module.exports = router
