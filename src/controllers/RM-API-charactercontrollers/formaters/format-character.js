@@ -5,8 +5,6 @@ const formatCharacter = (characters) => {
 
   const newFormatResults = []
 
-  newFormatResults.push({ pages: characters.info })
-
   for (let i = 0; i < results.length; i++) {
     const character = {
       id: results[i].id,
@@ -15,10 +13,13 @@ const formatCharacter = (characters) => {
       specie: results[i].species,
       status: results[i].status,
       origin: results[i].origin.name,
-      image: results[i].image
+      image: results[i].image,
+      favorite: false
     }
     newFormatResults.push(character)
   }
+
+  newFormatResults.push({ pages: characters.info })
 
   return newFormatResults
 }
